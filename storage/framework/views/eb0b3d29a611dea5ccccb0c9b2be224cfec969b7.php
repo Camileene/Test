@@ -1,0 +1,1 @@
+<?php /**PATH C:\Users\m.mamone\Test\resources\views/layouts.blade.php ENDPATH**/ ?>
