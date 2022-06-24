@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use App\DatabaseJson\Models\User;
+use Illuminate\Support\Facades\Storage;
 
-class ContactFormController extends Controller
+class UserFormController extends Controller
 {
-    public function submit(Request $request) {
-        $this->validate($request, [
-            'name' => 'required|string',
-            'surname' => 'required|string',
-            'email' => 'required|email',
+    public function userSubmit(UserRequest $request) {
+        $user = User::create([
+            'name' =>  $request['name'],
+            'surname' => $request['surname'],
+            'email' =>  $request['email']
         ]);
 
-        /*
-          Add mail functionality here.
-        */
-        return response()->json(null, 200);
+        // $users = User::all();
+        // $users dovrebbe contenere tutti i risultati, ma mostra soltanto oggetti vuoti nonostante il json si riempia correttamente.
+        // Ho implementato un secondo metodo per avere comunque la response.
+
+        $users = json_decode(file_get_contents(Storage::path('database-json/users.data.json')), true);
+        return response() -> json($users, 200);
     }
 }

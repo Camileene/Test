@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default {
       name: 'userForm',
       data() {
@@ -9,19 +11,27 @@ export default {
                   },
                   errors: {},
                   success: false,
-                  loaded: true,
-                  action: ''
+                  action: '',
+                  usersData: []
             };
       },
       methods: {
+
             userForm: function () {
-                  this.success = true;
+                  axios.post('/userSubmit', this.user).then(response => {
+                        this.usersData = response.data;
+                        this.success = true;
+                  }).catch(error => {
+                        if(error.response.status === 422) {
+                              this.errors = error.response.data.errors || {};
+                        }
+                  });
+
             },
+
             resetInput() {
-                  this.user.name = "";
-                  this.user.surname = "";
-                  this.user.email = "";
-                  this.user.success = false;
-            },
+                  this.user = {}
+                  this.success = false;
+            }
       }
 }

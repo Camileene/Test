@@ -6,5 +6,9 @@ use DatabaseJson\Model;
 
 class User extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'surname',
+        'email'
+    ];
 }

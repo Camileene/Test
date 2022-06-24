@@ -23,6 +23,9 @@ class CreateTableUserMigrate extends Migration
     public function up()
     {
         DatabaseJson::create('users', array(
+            'name' => 'string',
+            'surname' => 'string',
+            'email' => 'string',
             'created_at' => 'string',
             'updated_at' => 'string',
         ));
