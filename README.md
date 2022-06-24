@@ -11,17 +11,14 @@ Aprire un terminale all'interno del progetto ed eseguire i seguenti comandi:
 
 ```
 npm install
-
 ```
 
 ```
 composer update
-
 ```
 
 ```
 npm run watch
-
 ```
 
 ### Avviare laravel
@@ -31,7 +28,6 @@ Aprire un secondo terminale all'interno del progetto ed eseguire il comando:
 
 ```
 php artisan serve
-
 ```
 
 ### Configurazione completata - Testing dell'applicazione
