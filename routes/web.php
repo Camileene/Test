@@ -5,9 +5,8 @@ use App\Http\Controllers\UserFormController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('formView');
 });
 
 
-Route::post('/userSubmit', 
-[UserFormController::class, 'userSubmit']);
+Route::post('/userSubmit', [UserFormController::class, 'userSubmit']);
